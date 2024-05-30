@@ -8,7 +8,7 @@ USER 1001
 
 COPY . ./
 
-RUN ./mvnw package
+RUN mvn package
 
 EXPOSE 8080
 
