@@ -1,6 +1,0 @@
-org/acme/model/Quote$Source.class
-org/acme/util/RandomQuoteProvider.class
-org/acme/GreetingService.class
-org/acme/model/Quote$Sink.class
-org/acme/GreetingResource.class
-org/acme/model/Quote.class
