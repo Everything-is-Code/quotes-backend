@@ -15,4 +15,4 @@ RUN mvn package
 
 EXPOSE 8080
 
-ENTRYPOINT [ "java -jar /app/target/quote-app-1.0.0-SNAPSHOT.jar" ]
+ENTRYPOINT ["java -jar /app/target/quarkus-app/quarkus-run.jar"]
