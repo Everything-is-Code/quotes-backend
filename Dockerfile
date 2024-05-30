@@ -6,6 +6,9 @@ WORKDIR /app
 
 USER 1001
 
+RUN chown 1001:1001 .
+RUN chmod -R 775 .
+
 COPY . ./
 
 RUN mvn package
