@@ -3,7 +3,7 @@ WORKDIR /app
 COPY src /app/src
 COPY pom.xml /app
 
-RUN mvn  -f /app/pom.xml -DskipTests=true clean package
+RUN mvn -DskipTests=true clean package
 RUN ls -ltra /app/target/
 RUN cd /app/target/ && ls && pwd
 
