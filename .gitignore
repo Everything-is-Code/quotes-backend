@@ -24,3 +24,4 @@ replay_pidi*
 
 # ignore target folder
 /target
+/.vscode

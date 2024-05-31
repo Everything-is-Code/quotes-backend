@@ -2,8 +2,8 @@ FROM registry.access.redhat.com/ubi8/openjdk-21 AS build
 
 USER 1001
 
-# RUN chown -R 1001:1001 /app
-# RUN chmod -R 775 /app
+ RUN chown -R 1001:1001 /app
+ RUN chmod -R 775 /app
 
 RUN mkdir app
 
