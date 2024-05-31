@@ -2,17 +2,18 @@ FROM registry.access.redhat.com/ubi8/openjdk-21 AS build
 
 USER 1001
 
-RUN mkdir /app
+WORKDIR /app
 
-RUN chown -R 1001:1001 /app
-RUN chmod -R 775 /app
+# RUN chown -R 1001:1001 /app
+# RUN chmod -R 775 /app
 
 COPY src /app/src
 COPY pom.xml /app
 
-RUN cd /app && mvn -DskipTests=true clean package
+RUN mvn -DskipTests=true clean package
 RUN ls -ltra /app/target/
 RUN cd /app/target/ && ls && pwd
+
 
 FROM registry.access.redhat.com/ubi8/openjdk-21
 ENV LANGUAGE='en_US:en'
