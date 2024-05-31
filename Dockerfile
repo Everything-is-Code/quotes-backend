@@ -26,7 +26,7 @@ COPY  --from=build --chown=185 /home/jboss/target/quarkus-app/lib/ /deployments/
 COPY  --from=build --chown=185 /home/jboss/target/quarkus-app/*.jar /deployments/
 COPY  --from=build --chown=185 /home/jboss/target/quarkus-app/app/ /deployments/app/
 COPY  --from=build --chown=185 /home/jboss/target/quarkus-app/quarkus/ /deployments/quarkus/
-COPY  --from=build --chown=775 /home/jboss/target/quarkus-app/quarkus-run.jar /deployments/quarkus-run.jar
+RUN chmod -R 775 /deployments/quarkus-run.jar
 
 EXPOSE 8080
 
