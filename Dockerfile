@@ -5,15 +5,14 @@ USER 1001
 # RUN chown -R 1001:1001 /app
 # RUN chmod -R 775 /app
 
+RUN mkdir app
+
 COPY src /app/src
 COPY pom.xml /app
 
 RUN mvn -DskipTests=true clean package
 RUN ls -ltra /app/target/
 RUN cd /app/target/ && ls && pwd
-
-RUN mkdir app
-RUN copy target app/target 
 
 FROM registry.access.redhat.com/ubi8/openjdk-21
 ENV LANGUAGE='en_US:en'
