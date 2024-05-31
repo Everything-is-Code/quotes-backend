@@ -4,7 +4,7 @@ WORKDIR /app
 USER 1001
 
 # RUN chown -R 1001:1001 /app
-RUN chmod -R 775 /app
+# RUN chmod -R 775 /app
 
 COPY src /app/src
 COPY pom.xml /app
