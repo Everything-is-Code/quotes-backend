@@ -2,25 +2,22 @@ FROM registry.access.redhat.com/ubi8/openjdk-21 AS build
 
 USER 185
 
-WORKDIR /app
-RUN mkdir /app/target
+COPY src /home/app/src
+COPY pom.xml /home/app
 
-COPY src /app/src
-COPY pom.xml /app
-
-RUN mvn -f /app/pom.xml -DskipTests=true clean package
+RUN mvn -f /home/app/pom.xml -DskipTests=true clean package
 
 FROM registry.access.redhat.com/ubi8/openjdk-21
 ENV LANGUAGE='en_US:en'
 WORKDIR /deployments/
 
-USER 1001
+USER 185
 
 # We make four distinct layers so if there are application changes the library layers can be re-used
-COPY  --from=build --chown=185 /app/target/quarkus-app/lib/ /deployments/lib/
-COPY  --from=build --chown=185 /app/target/quarkus-app/*.jar /deployments/
-COPY  --from=build --chown=185 /app/target/quarkus-app/app/ /deployments/app/
-COPY  --from=build --chown=185 /app/target/quarkus-app/quarkus/ /deployments/quarkus/
+COPY  --from=build --chown=185 /home/app/target/quarkus-app/lib/ /deployments/lib/
+COPY  --from=build --chown=185 /home/app/target/quarkus-app/*.jar /deployments/
+COPY  --from=build --chown=185 /home/app/target/quarkus-app/app/ /deployments/app/
+COPY  --from=build --chown=185 /home/app/target/quarkus-app/quarkus/ /deployments/quarkus/
 
 EXPOSE 8080
 
