@@ -3,7 +3,7 @@ FROM registry.access.redhat.com/ubi8/openjdk-21 AS build
 USER 185
 
 WORKDIR /app
-
+RUN mkdir /app/target
 
 COPY src /app/src
 COPY pom.xml /app
