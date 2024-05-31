@@ -33,4 +33,4 @@ EXPOSE 8080
 # ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
 # ENV JAVA_APP_JAR="/deployments/quarkus-run.jar"
 
-ENTRYPOINT [ "mvn quarkus:dev" ]
+ENTRYPOINT [ "cd /deployments && mvn quarkus:dev" ]
