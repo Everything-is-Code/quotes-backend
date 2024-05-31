@@ -10,7 +10,7 @@ RUN mkdir app
 COPY src /app/src
 COPY pom.xml /app
 
-RUN mvn -DskipTests=true clean package
+RUN cd /app && mvn -DskipTests=true clean package
 RUN ls -ltra /app/target/
 RUN cd /app/target/ && ls && pwd
 
