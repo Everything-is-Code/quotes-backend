@@ -10,7 +10,7 @@ USER 185
 COPY src .
 COPY pom.xml .
 
-RUN mvn -DskipTests=true clean package
+RUN mvn clean install -DskipTests
 # RUN ls -ltra /app/target/
 # RUN cd /app/target/ && ls && pwd
 
