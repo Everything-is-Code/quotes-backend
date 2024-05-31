@@ -3,6 +3,9 @@ WORKDIR /app
 
 USER 1001
 
+RUN chown -R 1001:1001 .
+RUN chmod -R 775 . 
+
 COPY src /app/src
 COPY pom.xml /app
 
@@ -16,6 +19,9 @@ ENV LANGUAGE='en_US:en'
 WORKDIR /deployments/
 
 USER 1001
+
+RUN chown -R 1001:1001 .
+RUN chmod -R 775 . 
 
 # We make four distinct layers so if there are application changes the library layers can be re-used
 COPY  --from=build --chown=185 /app/target/quarkus-app/lib/ /deployments/lib/
