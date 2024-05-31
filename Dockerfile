@@ -20,9 +20,6 @@ WORKDIR /deployments/
 
 USER 1001
 
-RUN chown -R 1001:1001 /deployments
-RUN chmod -R 775 /deployments
-
 # We make four distinct layers so if there are application changes the library layers can be re-used
 COPY  --from=build --chown=185 /app/target/quarkus-app/lib/ /deployments/lib/
 COPY  --from=build --chown=185 /app/target/quarkus-app/*.jar /deployments/
