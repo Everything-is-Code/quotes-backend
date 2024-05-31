@@ -1,5 +1,4 @@
 FROM registry.access.redhat.com/ubi8/openjdk-21 AS build
-WORKDIR /app
 
 USER 1001
 
@@ -13,6 +12,8 @@ RUN mvn -DskipTests=true clean package
 RUN ls -ltra /app/target/
 RUN cd /app/target/ && ls && pwd
 
+RUN mkdir app
+RUN copy target app/target 
 
 FROM registry.access.redhat.com/ubi8/openjdk-21
 ENV LANGUAGE='en_US:en'
