@@ -2,7 +2,7 @@ FROM registry.access.redhat.com/ubi8/openjdk-21 AS build
 
 USER 185
 
-# WORKDIR /app
+WORKDIR /app
 
 # RUN chown -R 1001:1001 /app
 # RUN chmod -R 775 /app
@@ -16,9 +16,6 @@ RUN mvn clean install -DskipTests
 
 
 # We make four distinct layers so if there are application changes the library layers can be re-used
-
-RUN mkdir -p /app
-RUN chown 185 /app
 
 COPY  --chown=185 /home/jboss/target/quarkus-app/lib/ /deployments/lib/
 COPY  --chown=185 /home/jboss/target/quarkus-app/*.jar /deployments/
