@@ -1,8 +1,7 @@
-FROM registry.access.redhat.com/ubi8/openjdk-21 AS build
+FROM registry.access.redhat.com/ubi8/openjdk-21
 
 # WORKDIR /app
-COPY src .
-COPY pom.xml .
+COPY . .
 
 RUN ./mvnw clean package -Pnative -Dquarkus.kubernetes.deploy=true
 # RUN ls -ltra /app/target/
