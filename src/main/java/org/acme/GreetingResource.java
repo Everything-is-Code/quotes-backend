@@ -8,7 +8,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/hello")
+@Path("/")
 public class GreetingResource {
 
     @Inject
@@ -16,14 +16,14 @@ public class GreetingResource {
     
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/greeting/quote")
+    @Path("/quote")
     public Quote quoteService() {
         return service.quoteService();
     }
   
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/greeting/{name}")
+    @Path("/{name}")
     public String greeting(String name) {
         return service.greeting(name);
     }
