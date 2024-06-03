@@ -2,17 +2,10 @@ FROM registry.access.redhat.com/ubi8/openjdk-21 AS build
 
 ENV LANGUAGE='en_US:en'
 
-# RUN chown -R 1001:1001 /app
-# RUN chmod -R 775 /app
-
 COPY . .
-
 RUN mvn clean install -DskipTests
-# RUN ls -ltra /app/target/
-# RUN cd /app/target/ && ls && pwd
 
-
-RUN pwd
+RUN ls -la /home/jboss/
 # We make four distinct layers so if there are application changes the library layers can be re-used
 COPY --chown=185 /home/jboss/target/quarkus-app/lib/ /deployments/lib/
 COPY --chown=185 /home/jboss/target/quarkus-app/*.jar /deployments/
