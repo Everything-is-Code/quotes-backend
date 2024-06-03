@@ -3,7 +3,7 @@ FROM registry.access.redhat.com/ubi8/openjdk-21 AS build
 ENV LANGUAGE='en_US:en'
 
 COPY . .
-RUN mvn clean install -DskipTests
+RUN ./mvnw clean package -Pnative -Dquarkus.kubernetes.deploy=true
 
 RUN ls -la ./target/quarkus-app/lib
 # We make four distinct layers so if there are application changes the library layers can be re-used
