@@ -5,9 +5,9 @@ ENV LANGUAGE='en_US:en'
 COPY . .
 RUN mvn clean install -DskipTests
 
-RUN ls -la /home/jboss/target/quarkus-app
+RUN ls -la /home/jboss/target/quarkus-app/lib
 # We make four distinct layers so if there are application changes the library layers can be re-used
-COPY /home/jboss/target/quarkus-app/lib/ /deployments/lib/
+COPY --chown=185 /home/jboss/target/quarkus-app/lib/ /deployments/lib/
 COPY --chown=185 /home/jboss/target/quarkus-app/*.jar /deployments/
 COPY --chown=185 /home/jboss/target/quarkus-app/app/ /deployments/app/
 COPY --chown=185 /home/jboss/target/quarkus-app/quarkus/ /deployments/quarkus/
