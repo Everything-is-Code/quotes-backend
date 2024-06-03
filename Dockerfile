@@ -12,7 +12,7 @@ RUN mvn clean install -DskipTests
 # RUN cd /app/target/ && ls && pwd
 
 
-RUN PWD
+RUN pwd
 # We make four distinct layers so if there are application changes the library layers can be re-used
 COPY --chown=185 target/quarkus-app/lib/ /deployments/lib/
 COPY --chown=185 target/quarkus-app/*.jar /deployments/
