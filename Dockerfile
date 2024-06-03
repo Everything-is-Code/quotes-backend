@@ -3,7 +3,7 @@ FROM registry.access.redhat.com/ubi8/openjdk-21
 # WORKDIR /app
 COPY . .
 
-RUN ./mvnw clean package -Pnative -Dquarkus.kubernetes.deploy=true
+RUN mvn clean package -Pnative -Dquarkus.kubernetes.deploy=true
 # RUN ls -ltra /app/target/
 # RUN cd /app/target/ && ls && pwd
 
