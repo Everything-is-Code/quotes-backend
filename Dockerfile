@@ -2,10 +2,7 @@ FROM registry.access.redhat.com/ubi8/openjdk-21 AS build
 
 ENV LANGUAGE='en_US:en'
 
-WORKDIR /work/
-RUN chown 1001 /work \
-    && chmod "g+rwX" /work \
-    && chown 1001:root /work
+WORKDIR /work
 
 COPY . .
 RUN mvn clean install -DskipTests
