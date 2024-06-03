@@ -17,7 +17,8 @@ RUN mvn clean install -DskipTests
 
 # We make four distinct layers so if there are application changes the library layers can be re-used
 
-RUN mkdir /app
+RUN mkdir -p /app
+RUN chown 185 /app
 
 COPY  --chown=185 /home/jboss/target/quarkus-app/lib/ /deployments/lib/
 COPY  --chown=185 /home/jboss/target/quarkus-app/*.jar /deployments/
