@@ -5,8 +5,7 @@ ENV LANGUAGE='en_US:en'
 # RUN chown -R 1001:1001 /app
 # RUN chmod -R 775 /app
 
-COPY src .
-COPY pom.xml .
+COPY . .
 
 RUN mvn clean install -DskipTests
 # RUN ls -ltra /app/target/
